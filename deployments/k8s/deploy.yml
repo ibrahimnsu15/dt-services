@@ -1,0 +1,22 @@
+apiVersion: apps/v1beta2 # before 1.9
+kind: Deployment
+metadata:
+  name: dt-services
+spec:
+  selector:
+    matchLabels:
+      app: dt-services
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: dt-services
+    spec:
+      containers:
+        - name: dt-services
+          image: pineappleworkshop/dt-services:0.0.11
+          env:
+            - name: ENV
+              value: "dev"

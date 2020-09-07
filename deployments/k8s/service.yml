@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: dt-services
+  name: dt-services
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 7004
+      targetPort: 7004
+      protocol: TCP
+  selector:
+    app: dt-services
